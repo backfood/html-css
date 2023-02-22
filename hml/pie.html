@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pie {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ffc300;
+            background-image: linear-gradient(to right, transparent 50%, #ededed 0);
+            /* overflow: hidden; */
+        }
+
+        .pie::before {
+            content: " ";
+            display: block;
+            margin-right: 50%;
+            height: 100%;
+            /* border-radius: 100% 0 0 100% / 50%; */
+            background-color: inherit;
+            transform-origin: right;
+            animation: spin 50s linear infinite, bg 100s step-end infinite;
+            animation-play-state: paused;
+            animation-delay: -0s;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(.5turn);
+            }
+        }
+
+        @keyframes bg {
+            50% {
+                background-color: #ededed;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="pie"></div>
+    </div>
+    <script>
+        let obj={
+            a:10
+        }
+        let curren=obj.a
+        console.log(curren)
+        curren=20
+        console.log(obj.a)
+        console.log(curren)
+
+    </script>
+</body>
+
+</html>

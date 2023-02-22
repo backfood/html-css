@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let vm={a:{data:1},B:2}
+        let watchs=vm.a=Object.create(null)
+        console.log(watchs)
+        console.log(vm.a)
+        watchs={c:222}
+        console.log(vm)
+    </script>
+</body>
+</html>

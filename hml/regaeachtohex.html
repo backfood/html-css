@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // rgba -> hex
+        function hexify(color) {
+            var values = color
+                .replace(/rgba?\(/, '')
+                .replace(/\)/, '')
+                .replace(/[\s+]/g, '')
+                .split(',');
+            var a = parseFloat(values[3] || 1),
+                r = Math.floor(a * parseInt(values[0]) + (1 - a) * 255),
+                g = Math.floor(a * parseInt(values[1]) + (1 - a) * 255),
+                b = Math.floor(a * parseInt(values[2]) + (1 - a) * 255);
+            return "#" +
+                ("0" + r.toString(16)).slice(-2) +
+                ("0" + g.toString(16)).slice(-2) +
+                ("0" + b.toString(16)).slice(-2);
+        }
+
+        var myHex = hexify('rgba(255,255,255,0.7)');
+
+        console.log(myHex);
+        /**
+         * rgba(0,0,0,0.8) #323232
+         * 
+        */
+        // console.log(hexcolor)
+        // hex -> rgba
+        var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+        String.prototype.colorRgb = function () {
+            var sColor = this.toLowerCase();
+            if (sColor && reg.test(sColor)) {
+                if (sColor.length === 4) {
+                    var sColorNew = "#";
+                    for (var i = 1; i < 4; i += 1) {
+                        sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+                    }
+                    sColor = sColorNew;
+                }
+                var sColorChange = [];
+                for (var i = 1; i < 7; i += 2) {
+                    sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+                }
+                return { red: sColorChange[0], green: sColorChange[1], blue: sColorChange[2], alpha: null };
+            } else {
+                return sColor;
+            }
+        }
+        var color = '#f4f5f7';
+        let RGBA = color.colorRgb() // {red: 255, green: 255, blue: 255, alpha: null} (alpha自己添加进去的)
+        console.log(RGBA)
+    </script>
+</body>
+
+</html>

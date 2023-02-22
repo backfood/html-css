@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div:first-child {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, rgb(233, 195, 119) 25%, rgb(112, 160, 192) 0, #58a 50%, #fb3 0, #fb3 75%, #58a 0);
+            background-size: 30px 30px;
+        }
+
+        div:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background-size: 30px 30px;
+            background: repeating-linear-gradient(90deg, #fb3, #fb3 15px, #58a 0, #58a 30px);
+        }
+
+        div:nth-child(3) {
+            width: 500px;
+            height: 500px;
+            background: rgb(90, 190, 177);
+            background-image: repeating-linear-gradient(30deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1) 15px, transparent 0, transparent 30px),
+                repeating-linear-gradient(120deg, hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1) 15px, transparent 0, transparent 30px);
+        }
+
+        div:nth-child(4) {
+            width: 500px;
+            height: 500px;
+            background: rgb(118, 230, 192);
+            background-image: linear-gradient(white 1px, transparent 0),
+                linear-gradient(90deg, white 1px, transparent 0);
+            background-size: 30px 30px;
+        }
+
+        div:nth-child(5) {
+            width: 500px;
+            height: 500px;
+            background: rgb(118, 230, 192);
+            background-image: radial-gradient(white 10%, transparent 0),
+                radial-gradient(white 20%, transparent 0);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        span {
+            width: 30px;
+            height: 30px;
+            background-color: yellowgreen;
+            display: block;
+            opacity: .3;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span></span>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

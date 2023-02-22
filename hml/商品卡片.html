@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .bd {
+      width: 557px;
+      height: 243px;
+    }
+
+    .img-left {
+      width: 270px;
+      height: 220px;
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+    }
+
+    .right-top {
+      width: 240px;
+      height: 80px;
+    }
+
+    .r-b {}
+
+    .canvas {
+      width: 300px;
+      height: 300px;
+      border: 6px solid #123412;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="bd">
+    <img class="img-left" src="" alt="" srcset="">
+    <div class="right">
+      <img src="" alt="" class="right-top">
+      <div class="r-b"></div>
+    </div>
+  </div> -->
+  <canvas class="canvas" id="canvas" width="300px" height="300px"></canvas>
+  <script>
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    ctx.arc(
+      100,
+      100,
+      50,
+      /** 起点 */
+      -Math.PI / 2,
+      /** 终点 */
+      Math.PI*1.4
+
+    );
+    ctx.stroke();
+  </script>
+  <script>
+    let obj = {
+      a_v: 124,
+      b_sf: [{
+        ab_c: {
+          d_cd: 24
+        }
+      }],
+      b_f: {
+        n_s: 'df',
+        d: '24'
+      }
+    }
+    function camelizeStr(str) {
+      return str.replace(/_(\w)/g, (val, val2) => {
+        console.log(_, s)
+        return s.toUpperCase()
+      })
+    }
+    let cam = camelizeStr('ass_ds')
+    console.log(cam)
+    function trans(obj) {
+      let data = {}
+      for (let key in obj) {
+
+      }
+    }
+  </script>
+</body>
+
+</html>

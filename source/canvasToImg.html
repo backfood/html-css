@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #canvas {
+
+            border: 2px solid #052d05;
+            background-color: rgba(0, 0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="64px" height="64px" style="background-color: rgba(0, 0, 0, 0);"></canvas>
+    <script>
+        let canvas = document.getElementById("canvas")
+        let ctx = canvas.getContext('2d');
+        ctx.beginPath();
+        // strokeStyle = '#FFF'
+        ctx.arc(32, 32, 32, Math.PI / 2, Math.PI * 3 / 2, false);
+        ctx.lineTo(32, 8)
+        ctx.arc(32, 32, 24, Math.PI * 3 / 2, Math.PI / 2, true);
+        ctx.lineTo(32, 64)
+        ctx.fillStyle = "#ededed"
+        ctx.fill()
+        ctx.beginPath();
+        ctx.arc(32, 32, 32, Math.PI / 2, Math.PI * 3 / 2, true);
+        ctx.lineTo(32, 8)
+        ctx.arc(32, 32, 24, Math.PI * 3 / 2, Math.PI / 2, false);
+        ctx.fillStyle = "#ffc300"
+        ctx.fill()
+
+        let base64 = canvas.toDataURL("image/png");
+        let a = document.createElement("a");
+        a.download = '下载图片'
+        a.href = base64;
+        document.body.appendChild(a); a.click(); a.remove();
+        // ctx.stroke();
+        // const img=new Image();
+        // img.onload = function () {
+        //     ctx.drawImage(img, 0, 0);
+        //     const datas = ctx.getImageData(0, 0, 40, 40);
+        //     for (var i = 3; i < datas.data.length; i += 4) {
+        //         datas.data[i] = 150;
+        //     }
+        //     ctx.putImageData(datas, 0, 0);
+        // }
+        // img.src = './icon.jpg';
+
+        // var oc = document.getElementById("canvas");
+        // var ocx = oc.getContext("2d");
+        // var img = new Image();
+        // var createCanvas = document.createElement("canvas");
+        // createCanvas.width = "640";
+        // createCanvas.height = "640";
+        // var cvs = createCanvas.getContext("2d");
+        // var getPathval = null;
+        function download(type) {
+            //设置保存图片的类型
+            var imgdata = oc.toDataURL(type);
+            //判断图片的保存类型添加底边颜色 解决底边颜色全是透明的情况.
+            if (getPathval == null) {
+                cvs.fillStyle = "#fff"
+                cvs.fillRect(0, 0, 800, 600);
+            } else {
+                img.src = getPathval;
+                cvs.drawImage(img, 0, 0, 800, 600);
+            }
+            img.src = imgdata;
+            cvs.drawImage(img, 0, 0, 800, 600);
+            imgdata = createCanvas.toDataURL(type);
+
+            //清除createCanvas,img缓存
+            createCanvas = null;
+            img = null;
+
+            //将mime-type改为image/octet-stream,强制让浏览器下载
+            var fixtype = function (type) {
+                type = type.toLocaleLowerCase().replace(/jpg/i, 'jpeg');
+                var r = type.match(/png|jpeg|bmp|gif/)[0];
+                return 'image/' + r;
+            }
+            imgdata = imgdata.replace(fixtype(type), 'image/octet-stream');
+
+            //将图片保存到本地
+            var saveFile = function (data, filename) {
+                var link = document.createElement('a');
+                link.href = data;
+                link.download = filename;
+                var event = document.createEvent('MouseEvents');
+                event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                link.dispatchEvent(event);
+            }
+            var filename = new Date().toLocaleDateString() + '.' + type;
+            saveFile(imgdata, filename);
+        }
+        // download("png")
+    </script>
+</body>
+
+</html>

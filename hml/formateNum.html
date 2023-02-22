@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = ''
+        let num = "2501657"
+        let endStr = '.' + num.slice(-2)
+        num = num.slice(0, -2)
+        function formateNum(num) {
+            if (!num) return;
+            str = num.slice(-3) + str
+            let tempStr = num.slice(0, -3)
+            if (tempStr) {
+                str = "," + str
+                formateNum(tempStr)
+            }
+
+        }
+        formateNum(num)
+        console.log(str + endStr)
+    </script>
+</body>
+
+</html>

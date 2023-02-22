@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒泡</title>
+</head>
+
+<body>
+    <script>
+        function bubbling(arr = []) {
+            if (!arr.length) return
+            for (let i = 1; i < arr.length; i++) {
+                for (let j = 0; j < arr.length; j++) {
+                    if (arr[j] < arr[j - 1]) {
+                        let temp = arr[j - 1];
+                        arr[j - 1] = arr[j]
+                        arr[j] = temp
+                    }
+                }
+            }
+            return arr
+        }
+
+        // let result = bubbling([, 1, 57, 3, 7, 32, 8, 23, 4])
+        // console.log(result)
+
+        all = [
+           
+            new Promise((resolve, reject) => {
+                console.log("异步触发，应当比定时器快一点")
+                resolve("未定时")
+            }), new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log("顶时后触发")
+                    resolve('定时')
+                }, 500)
+            }),
+        ]
+        Promise.all(all).then((result) => {
+            console.log(result, '应当是最后')
+        })
+    </script>
+</body>
+
+</html>

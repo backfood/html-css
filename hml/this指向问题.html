@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<div><button id="button"> 按钮 </button></div>
+
+<body>
+  <script>
+
+    /**
+     * 指定时间内再次触发不执行
+    */
+    function debounced(func, delay, immediate) {
+      let timer = null, result = null
+
+
+   
+      return function () {
+        clearTimeout(timer)
+        let args = arguments
+        if (immediate) {
+          if (!timer) {
+            result = func.apply(this, args)
+          }
+          timer = setTimeout(() => {
+            timer = null;
+          }, delay)
+        } else {
+          timer = setTimeout(() => {
+            result = func.apply(this, args)
+          }, delay)
+        }
+        return result
+      }
+
+    }
+
+    function throttle(func,delay,immediate ) {
+      let isDo=false
+      let oldDate=(new Date()).getTime()
+      return function(){
+        const now=(new Date).getTime()
+        if(immediate&&!isDo){
+          func(arguments)
+          isDo=true
+          setTimeout(()=>{
+            isDo=false
+          },delay)
+        }else 
+        if(now-oldDate>delay){
+          func(arguments)
+          oldDate=now
+        }
+      }
+
+
+    }
+    button.addEventListener("click", throttle(function (el) {
+      console.log(1)
+    }, 2000, false))
+    // var name = ' window 的 name'
+    // var obj = {
+    //   name: "obj 的 name"
+    // }
+    // // console.log(a)
+    // function getname(name) {
+    //   // var  a=10;
+    //   this.name = name
+    //   console.log(this.name)
+    // }
+    // function getOtherFunction() {
+    //   this.getname()
+    // }
+    // getOtherFunction()
+    // getname()
+    // getname.apply(obj)
+    // console.log(a)
+    // function foo(something) {
+    //   console.log(this.a, something);
+    //   return this.a + something;
+    // }
+
+    // var obj = {
+    //   a: 2
+    // };
+
+    // var bar = function () {
+    //   return foo.apply(obj, arguments);
+    // };
+
+    // var b = bar(3); // 2 3
+    // console.log(b); // 5
+    // var inst = new getname("zhansan")
+    // function foo(p1, p2) {
+    //   this.val = p1 + p2;
+    // }
+    // // 在这里使用 `null` 是因为在这种场景下我们不关心 `this` 的硬绑定
+    // // 而且反正它将会被 `new` 调用覆盖掉！
+    // var bar = foo.bind(null, "p1",'p5');
+    // bar('p5')
+    // // console.log(bar.val)
+    // var baz = new bar("p2");
+    // // baz.val; // p1p2
+    // console.log(baz.val)
+
+    // function foo(a, b) {
+    //   console.log("a:" + a + ", b:" + b);
+    // }
+
+    // // 将数组散开作为参数
+    // foo.apply(null, [2, 3]); // a:2, b:3
+
+    // // 用 `bind(..)` 进行柯里化
+    // var bar = foo.bind(null, 2);
+    // bar(3); // a:2, b:3
+
+    // var ø = Object.create(null);
+
+    // var obj1={a:1}
+    // var obj2={a:1}
+    // console.log(obj1===obj2)
+    // let f;
+    // // let o = 10;
+    // function a(o) {
+    //   if (!f) {
+    //     f = () => {
+    //       console.log('console f', o);
+    //     }
+    //   } else {
+    //     console.log('f true', o);
+    //   }
+    //   o += 1;
+    //   f();
+    // }
+    // a(1)
+    // a(5)
+  </script>
+</body>
+
+</html>

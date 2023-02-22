@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function aaa(param) {
+            if (param == 1) {
+                console.log(param)
+            } else {
+                throw Error("this is error")
+            }
+        }
+        function bbb() {
+            try {
+                aaa()
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        // bbb()
+    </script>
+    <script>
+        let deps=[]
+        let watch={
+
+        }
+        let a = 1, b = 2
+        const computed = {
+            get: function () {
+                return a + b
+            }
+        }
+        Object.defineProperty(computed,get,{
+            get(){
+                return computed.get()
+            }
+        })
+    </script>
+</body>
+
+</html>
